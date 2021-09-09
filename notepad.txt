@@ -1,0 +1,26 @@
+Players: A, B, C, D
+
+A (sb) -> sb
+B (bb) -> bb
+
+C can: 
+    - call -> bb
+    - raise -> bb + r1 where r1 >= bb
+    - fold
+
+C raise -> 4 (2 call, 2 raise)
+
+D can: 
+    - call -> bb + r1
+    - raise -> bb + r1 + r2 where r2 >= r1
+    - fold
+
+D raise -> 6 (4 call, 2 raise)
+
+A call -> min call amount
+
+B call -> PLAY ENDS
+
+--
+
+slider when you click raose is chips vertical like large volume slider in cc ios

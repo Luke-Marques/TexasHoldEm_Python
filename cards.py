@@ -1,6 +1,6 @@
-from enum import Enum, auto
+from enum        import Enum, auto
 from dataclasses import dataclass, field
-from random import shuffle
+from random      import shuffle
 
 
 class Suit(Enum):
@@ -21,7 +21,6 @@ class Suit(Enum):
         elif self.value == 4:
             return 'Spades'
 
-
 class Rank(Enum):
     """Card ranks."""
 
@@ -37,7 +36,7 @@ class Rank(Enum):
     JACK = 11
     QUEEN = 12
     KING = 13
-    ACE = 14  # becuase in Poker, Ace is high
+    ACE = 14  # ace is high in poker
 
     def __str__(self) -> str:
         if self.value == 11:
@@ -50,7 +49,6 @@ class Rank(Enum):
             return 'Ace'
         else:
             return str(self.value)
-
 
 @dataclass(order=True, frozen=True)
 class Card:
@@ -66,6 +64,21 @@ class Card:
     def __str__(self) -> str:
         return f'{self.rank} of {self.suit}'
     
+    def __add__(self, other) -> int:
+        if type(other) is int:
+            return self.rank.value + other
+        elif type(other) is type(self):
+            return self.rank.value + other.rank.value
+        else:
+            raise TypeError(f"unsupported operand type(s) for +: '{type(self).__name__}' and '{type(other).__name__}'")
+    
+    def __sub__(self, other) -> int:
+        if type(other) is int:
+            return self.rank.value - other
+        elif type(other) is type(self):
+            return self.rank.value - other.rank.value
+        else:
+            raise TypeError(f"unsupported operand type(s) for -: '{type(self).__name__}' and '{type(other).__name__}'")
 
 class Deck:
     """Deck of playing cards object."""
@@ -75,18 +88,19 @@ class Deck:
         self.__shuffle_cards(self.cards)
 
     def __get_cards(self) -> list:
+        # return [Card(r, s) for (r, s) in [(r, s) for r in [r for r in Rank] for s in [s for s in Suit]]]
         ranks = [rank for rank in Rank]
         suits = [suit for suit in Suit]
         ranks_and_suits = [(rank, suit) for rank in ranks for suit in suits]
-        return [Card(rank, suit) for (rank, suit) in ranks_and_suits]  # Could be condensed to single list comprehension
+        return [Card(rank, suit) for (rank, suit) in ranks_and_suits]
 
     def __shuffle_cards(self, cards: list) -> None:
         shuffle(cards)
 
-    def deal(self, location: list) -> None:
+    def deal_card(self, location: list) -> None:
         location.append(self.cards.pop())
 
-    def count_cards(self) -> int:
+    def count_remaining_cards(self) -> int:
         return len(self.cards)
 
     def show_cards(self) -> None:

@@ -19,7 +19,7 @@ class StackTooSmall(Error):
         self.message = message
         super().__init__(self.message)
         
-    def __string__(self) -> str:
+    def __str__(self) -> str:
         return f'Amount in stack ({self.stack_amount}) is less than the action amount ({self.pay_amount}).'
     
     
@@ -40,9 +40,35 @@ class AllIn(Error):
         self.message = message
         super().__init__(self.message)
         
-    def __string__(self) -> str:
+    def __str__(self) -> str:
         return f'Amount in stack ({self.stack_amount}) is equal to the action amount ({self.pay_amount}). This means requires an All-In action.'
     
     
+# class InvalidEntityCount(Error):
+#     """Raised when a user submits an invalid input for the number of players during game setup."""
     
+#     STANDARD_MESSAGE = 'Invalid input for the number of players.'
     
+#     def __init__(self, message: str = STANDARD_MESSAGE) -> None:
+#         self.message = message
+#         super().__init__(self.message)
+        
+
+# class InvalidPlayerName(Error):
+#     """Raised when a user submits an invalid input for the player name during game setup."""
+    
+#     STANDARD_MESSAGE = 'Invalid input for the player name.'
+    
+#     def __init__(self, message: str = STANDARD_MESSAGE) -> None:
+#         self.message = message
+#         super().__init__(self.message)
+        
+
+# class InvalidStackAmount(Error):
+#     """Raised when a user submits an invalid input for the initial stack amount during game setup."""
+    
+#     STANDARD_MESSAGE = 'Invalid input for the initial stack amount.'
+    
+#     def __init__(self, message: str = STANDARD_MESSAGE) -> None:
+#         self.message = message
+#         super().__init__(self.message)
