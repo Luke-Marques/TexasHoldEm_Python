@@ -1,7 +1,7 @@
 # TexasHoldEm_Python
 Texas hold-em poker game against NPC opponents, implemented in Python3.
 
-This project is teaching me a lot about object orientated programming, as well as improving my modularisation of codebases. The end goal of this project is to have a functional, command line poker game, where users can compete against NPCs. These NPCs will have a simple A.I. compenenant, and different, randomly generated attributes (e.g. intelligence, recklessness, "scareability", etc.). 
+This project is teaching me a lot about object orientated programming, as well as improving my modularisation of codebases. The end goal of this project is to have a functional, command line poker game, where users can compete against NPCs. These NPCs will have a simple A.I. component, and different, randomly generated attributes (e.g. intelligence, recklessness, "scareability", etc.). 
 
 After succesfully building the command line game, I would like to continue on to building a GUI for the poker game.
 
